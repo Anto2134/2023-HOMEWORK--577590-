@@ -126,7 +126,7 @@ public class DiaDia {
 		this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzoDaPosare);
 		this.io.mostraMessaggio("Attrezzo " + nomeAttrezzo + " posato!");
 
-		//io.mostraMessaggio("Attrezzi nella borsa:\n");
+		
 		for(Attrezzo attrezzo : this.partita.getGiocatore().getBorsa().getAttrezzi()) {
 			if(attrezzo != null) {
 				io.mostraMessaggio("Attrezzi nella borsa:\n");
