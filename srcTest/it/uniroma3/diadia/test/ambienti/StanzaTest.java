@@ -2,19 +2,22 @@ package it.uniroma3.diadia.test.ambienti;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaTest {
-	Stanza s = new Stanza("stanzaTest");
-	Stanza s2 = new Stanza("stanzaTest2");
-	Attrezzo osso;
-	Attrezzo lanterna;
-	Attrezzo spada;
-	Attrezzo lancia;
+	private Attrezzo osso;
+	private Attrezzo lanterna;
+	private Attrezzo spada;
+	private Attrezzo lancia;
+	protected Stanza s = new Stanza("stanzaTest");
+	protected Stanza s2;
+	private Direzione NORD;
 
 	@Before
 	public void setUp() {
@@ -22,6 +25,8 @@ public class StanzaTest {
 		lanterna = new Attrezzo("lanterna",3);
 		spada = new Attrezzo("spada",5);
 		lancia = new Attrezzo("lancia",2);
+		Stanza s2 = new Stanza("stanzaTest2");
+		NORD = Direzione.NORD;
 	}
 
 	@Test
@@ -30,17 +35,17 @@ public class StanzaTest {
 		assertTrue(s.addAttrezzo(lancia));
 		assertTrue(s.addAttrezzo(osso));
 		assertTrue(s.addAttrezzo(spada));
-		assertNotNull(s.hasAttrezzo("lancia"));
-		assertNotNull(s.hasAttrezzo("lanterna"));
+		assertTrue(s.hasAttrezzo("lancia"));
+		assertTrue(s.hasAttrezzo("lanterna"));
 	}
 	@Test
 	public void testGetStanzaAdiacente() {
-		assertNull(s.getStanzaAdiacente("nord"));
+		assertNull(s.getStanzaAdiacente(NORD));
 	}
 	@Test
 	public void testSetStanzaAdiacente() {
-		s.impostaStanzaAdiacente("sud", s2);
-		assertEquals(s2,s.getStanzaAdiacente("sud"));
+		s.impostaStanzaAdiacente(NORD, s2);
+		assertEquals(s2,s.getStanzaAdiacente(NORD));
 	}
 	@Test
 	public void testGetAttrezzo() {
@@ -61,7 +66,7 @@ public class StanzaTest {
 	}
 	@Test
 	public void testGetDirezioni() {
-		s.impostaStanzaAdiacente("sud", s2);
+		s.impostaStanzaAdiacente(NORD, s2);
 		assertNotNull(s.getDirezioni());
 	}
 }

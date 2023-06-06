@@ -8,11 +8,11 @@ public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi {
 	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa", "guarda"};
 	private Scanner scannerDiParole;
 	@Override
-	public Comando costruisciComando(String istruzione, IO io) {
+	public AbstractComando costruisciComando(String istruzione, IO io) {
 		scannerDiParole = new Scanner(istruzione);
 		String nomeComando = null;
 		String parametro = null;
-		Comando comando = null;
+		AbstractComando comando = null;
 
 		if (scannerDiParole.hasNext())
 			nomeComando = scannerDiParole.next(); // prima parola: nome del comando

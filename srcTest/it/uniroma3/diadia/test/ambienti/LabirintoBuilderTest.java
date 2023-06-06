@@ -2,15 +2,19 @@ package it.uniroma3.diadia.test.ambienti;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.ambienti.Direzione;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class LabirintoBuilderTest {
 	private LabirintoBuilder labirinto;
+	private Direzione nord = Direzione.NORD;
 	
 	@Before
 	public void setUp() {
@@ -53,8 +57,8 @@ public class LabirintoBuilderTest {
 	public void testAddAdiacenza() {
 		labirinto.addStanza("Atrio");
 		labirinto.addStanza("N10");
-		labirinto.addAdiacenza("Atrio", "N10", "nord");
-		assertEquals(new Stanza("N10").getNome(), labirinto.getListaStanze().get("Atrio").getStanzaAdiacente("nord").getNome());
+		labirinto.addAdiacenza("Atrio", "N10", nord);
+		assertEquals(new Stanza("N10").getNome(), labirinto.getListaStanze().get("Atrio").getStanzaAdiacente(nord).getNome());
 	}
 
 }

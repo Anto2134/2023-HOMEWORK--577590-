@@ -4,15 +4,21 @@ import java.util.Scanner;
 public class IOConsole implements IO {
 	
 	private Scanner scannerDiLinee;
+	
+	public IOConsole(Scanner scannerDiLinee) {
+		this.scannerDiLinee = scannerDiLinee;
+	}
+	
+	public IOConsole() {
+		this.scannerDiLinee = new Scanner(System.in);
+	}
 
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
 	}
 	
 	public String leggiRiga() {
-		scannerDiLinee = new Scanner(System.in);
 		String riga = scannerDiLinee.nextLine();
-	    //scannerDiLinee.close();
 		return riga;
 	}
 }
